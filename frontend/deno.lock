@@ -1,12 +1,14 @@
 {
   "version": "4",
   "specifiers": {
+    "npm:@catppuccin/daisyui@^1.2.1": "1.2.1_daisyui@4.12.22",
     "npm:@catppuccin/tailwindcss@~0.1.6": "0.1.6_tailwindcss@3.4.17__postcss@8.4.49",
     "npm:@sveltejs/adapter-node@^5.2.9": "5.2.11_@sveltejs+kit@2.15.0__@sveltejs+vite-plugin-svelte@4.0.4___svelte@5.15.0____acorn@8.14.0___vite@5.4.11__svelte@5.15.0___acorn@8.14.0__vite@5.4.11_rollup@4.29.1_@sveltejs+vite-plugin-svelte@4.0.4__svelte@5.15.0___acorn@8.14.0__vite@5.4.11_svelte@5.15.0__acorn@8.14.0_vite@5.4.11",
     "npm:@sveltejs/kit@2": "2.15.0_@sveltejs+vite-plugin-svelte@4.0.4__svelte@5.15.0___acorn@8.14.0__vite@5.4.11_svelte@5.15.0__acorn@8.14.0_vite@5.4.11",
     "npm:@sveltejs/vite-plugin-svelte@4": "4.0.4_svelte@5.15.0__acorn@8.14.0_vite@5.4.11",
     "npm:@tailwindcss/typography@~0.5.15": "0.5.15_tailwindcss@3.4.17__postcss@8.4.49",
     "npm:autoprefixer@^10.4.20": "10.4.20_postcss@8.4.49",
+    "npm:daisyui@^4.12.22": "4.12.22",
     "npm:prettier-plugin-svelte@^3.2.6": "3.3.2_prettier@3.4.2_svelte@5.15.0__acorn@8.14.0",
     "npm:prettier-plugin-tailwindcss@~0.6.5": "0.6.9_prettier@3.4.2_prettier-plugin-svelte@3.3.2__prettier@3.4.2__svelte@5.15.0___acorn@8.14.0_svelte@5.15.0__acorn@8.14.0",
     "npm:prettier@^3.3.2": "3.4.2",
@@ -26,6 +28,16 @@
         "@jridgewell/gen-mapping",
         "@jridgewell/trace-mapping"
       ]
+    },
+    "@catppuccin/daisyui@1.2.1_daisyui@4.12.22": {
+      "integrity": "sha512-smtDviKKHp/NgReDgNEfRoWxwo+Q4OXX1joaOmKzNZ7oFk2xNWz9D+17ihOt1IsebmQd7i27PkHoO2qR6SZHzQ==",
+      "dependencies": [
+        "@catppuccin/palette",
+        "daisyui"
+      ]
+    },
+    "@catppuccin/palette@1.7.1": {
+      "integrity": "sha512-aRc1tbzrevOTV7nFTT9SRdF26w/MIwT4Jwt4fDMc9itRZUDXCuEDBLyz4TQMlqO9ZP8mf5Hu4Jr6D03NLFc6Gw=="
     },
     "@catppuccin/tailwindcss@0.1.6_tailwindcss@3.4.17__postcss@8.4.49": {
       "integrity": "sha512-V+Y0AwZ5SSyvOVAcDl7Ng30xy+m82OKnEJ+9+kcZZ7lRyXuZrAb2GScdq9XR3v+ggt8qiZ/G4TvaC9cJ88AAXA==",
@@ -461,8 +473,27 @@
         "which"
       ]
     },
+    "css-selector-tokenizer@0.8.0": {
+      "integrity": "sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==",
+      "dependencies": [
+        "cssesc",
+        "fastparse"
+      ]
+    },
     "cssesc@3.0.0": {
       "integrity": "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg=="
+    },
+    "culori@3.3.0": {
+      "integrity": "sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ=="
+    },
+    "daisyui@4.12.22": {
+      "integrity": "sha512-HDLWbmTnXxhE1MrMgSWjVgdRt+bVYHvfNbW3GTsyIokRSqTHonUTrxV3RhpPDjGIWaHt+ELtDCTYCtUFgL2/Nw==",
+      "dependencies": [
+        "css-selector-tokenizer",
+        "culori",
+        "picocolors",
+        "postcss-js"
+      ]
     },
     "debug@4.4.0": {
       "integrity": "sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==",
@@ -546,6 +577,9 @@
         "merge2",
         "micromatch"
       ]
+    },
+    "fastparse@1.1.2": {
+      "integrity": "sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ=="
     },
     "fastq@1.18.0": {
       "integrity": "sha512-QKHXPW0hD8g4UET03SdOdunzSouc9N4AuHdsX8XNcTsuz+yYFILVNIX4l9yHABMhiEI9Db0JTTIpu0wB+Y1QQw==",
@@ -1147,12 +1181,14 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@catppuccin/daisyui@^1.2.1",
         "npm:@catppuccin/tailwindcss@~0.1.6",
         "npm:@sveltejs/adapter-node@^5.2.9",
         "npm:@sveltejs/kit@2",
         "npm:@sveltejs/vite-plugin-svelte@4",
         "npm:@tailwindcss/typography@~0.5.15",
         "npm:autoprefixer@^10.4.20",
+        "npm:daisyui@^4.12.22",
         "npm:prettier-plugin-svelte@^3.2.6",
         "npm:prettier-plugin-tailwindcss@~0.6.5",
         "npm:prettier@^3.3.2",
