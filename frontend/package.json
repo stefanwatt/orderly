@@ -29,7 +29,10 @@
 	"dependencies": {
 		"@catppuccin/daisyui": "^1.2.1",
 		"@catppuccin/tailwindcss": "^0.1.6",
+		"@supabase/ssr": "^0.5.2",
+		"@supabase/supabase-js": "^2.47.10",
 		"@tailwindcss/typography": "^0.5.15",
-		"daisyui": "^4.12.22"
+		"daisyui": "^4.12.22",
+		"svelte-adapter-deno": "^0.9.1"
 	}
 }
