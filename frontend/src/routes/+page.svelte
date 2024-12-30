@@ -47,7 +47,7 @@
 </div>
 <div class="mt-12 flex justify-center">
 	<div class="mb-2">
-		<label class="form-control w-full max-w-xs">
+		<label class="form-control w-full max-w-xs block">
 			<div class="label">
 				<span class="label-text">What is your name?</span>
 			</div>
