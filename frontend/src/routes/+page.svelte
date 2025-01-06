@@ -26,11 +26,8 @@
 	}
 </script>
 
-<div class="flex h-80 justify-center">
-	<img src="orderly.png" alt="brand" />
-</div>
 <div class="mt-12 flex justify-center">
 	<div class="mb-2">
 	</div>
-	<button onclick={createLobby} class="btn btn-primary text-2xl"> Create Lobby </button>
+	<button onclick={createLobby} class="btn btn-primary text-2xl">Play</button>
 </div>
