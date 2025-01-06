@@ -48,6 +48,7 @@ Deno.serve(async (req) => {
         headers: { "Content-Type": "application/json" },
       });
     }
+    console.log(res.error)
     assert(res.data, "error creating participation");
   }
   console.log("everything ok");

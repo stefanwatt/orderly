@@ -1,11 +1,15 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { assert } from "jsr:@std/assert";
 import { createClient } from "jsr:@supabase/supabase-js@2";
+import { corsHeaders } from '../_shared/cors.ts'
 
 const URL = Deno.env.get("SUPABASE_URL") || "";
 const KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 
 Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
   const client = createClient(URL, KEY);
   console.log(req.headers)
   const token = req.headers.get("Authorization")?.replace("Bearer ", "");
@@ -18,7 +22,10 @@ Deno.serve(async (req) => {
   if (res.error) {
     return new Response(JSON.stringify(res.error), {
       status: 500,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        ...corsHeaders,
+        "Content-Type": "application/json"
+      },
     });
   }
   assert(res.data, "error creating game");
@@ -36,6 +43,11 @@ Deno.serve(async (req) => {
   assert(res.data, "error creating participation");
   return new Response(
     JSON.stringify(game),
-    { headers: { "Content-Type": "application/json" } },
+    {
+      headers: {
+        ...corsHeaders,
+        "Content-Type": "application/json"
+      }
+    },
   );
 });

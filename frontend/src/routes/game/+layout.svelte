@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { LayoutServerData } from './$types';
+	import type { LayoutData } from './$types';
 	import { assert } from '$lib/assert';
 
-	let { data, children }: { data: LayoutServerData; children: Snippet } = $props();
+	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 	let { session, supabase } = $derived(data);
 	let name = $state('');
 	let player = $state(data.player);
@@ -29,10 +29,11 @@
 </script>
 
 {#if !player.name}
+  <h1>Where not sure what to call you...</h1>
 	<form onsubmit={setName}>
 		<label class="form-control block w-full max-w-xs">
 			<div class="label">
-				<span class="label-text">What is your name?</span>
+				<span class="label-text">Username</span>
 			</div>
 			<input
 				bind:value={name}

@@ -8,7 +8,7 @@
 	let { session, supabase } = $derived(data);
 
 	onMount(() => {
-		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
+		const { data } = supabase.auth.onAuthStateChange(async (_, newSession) => {
 			console.log('auth state changed');
 			if (newSession?.expires_at !== session?.expires_at) {
 				invalidate('supabase:auth');
@@ -19,15 +19,19 @@
 	});
 
 	async function createLobby() {
-		const res = await fetch('/game/create-lobby');
-		const id = await res.text();
-		assert(res.ok, 'error creating lobby');
-		goto(`/game/${id}`);
+		let user_id = session?.user?.id;
+		if (!session) {
+			const { data, error } = await supabase.auth.signInAnonymously();
+			assert(!error && !!data.user, 'error signing in anonymously');
+			user_id = data.user!.id;
+		}
+    const {data,error} = await supabase.functions.invoke("create-lobby",{})
+    assert(!error && data.id, 'error creating lobby');
+		goto(`/game/${data.id}`);
 	}
 </script>
 
 <div class="mt-12 flex justify-center">
-	<div class="mb-2">
-	</div>
+	<div class="mb-2"></div>
 	<button onclick={createLobby} class="btn btn-primary text-2xl">Play</button>
 </div>

@@ -19,7 +19,7 @@ export const load: PageServerLoad = async ({ params, locals: { supabase } }) => 
   //   body: JSON.stringify({ id })
   // })
 
-  const res = await supabase.functions.invoke("join-lobby", { body: { id } })
+  const res = await supabase.functions.invoke("join-lobby", { body: JSON.stringify({ id }) })
   const { data } = res
   if (res.error) return error(500, res.error)
   assert(data && data.success && data.id, "malformed json response")
