@@ -37,9 +37,7 @@ Deno.serve(async (req) => {
     );
   }
   const game = res.data;
-  const already_in_lobby = game.players.find((item) =>
-    item.player[0].id == user.id
-  );
+  const already_in_lobby = game.players.find((item) => item.player.id == user.id);
   if (!already_in_lobby) {
     const participation = { player_id: user.id, game_id: game.id };
     const res = await client.from("participations").insert([participation])

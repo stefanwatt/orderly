@@ -9,16 +9,19 @@ export const load: PageServerLoad = async ({ params, locals: { supabase } }) => 
     assert(!signup.error, "error signing in anonymously")
   }
   const id = params.slug
-  const res = await fetch("http://localhost:5173/api/functions/v1/join-lobby", {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ id })
-  })
-  console.log(res)
-  if (!res.ok) return error(404, 'Not found')
-  const json = await res.json()
-  assert(json && json.success && json.id, "malformed json response")
-  return json;
+
+  // const res = await fetch("http://localhost:5173/api/functions/v1/join-lobby", {
+  //   method: "POST",
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Authorization': 'Bearer ' + session.data.session?.access_token
+  //   },
+  //   body: JSON.stringify({ id })
+  // })
+
+  const res = await supabase.functions.invoke("join-lobby", { body: { id } })
+  const { data } = res
+  if (res.error) return error(500, res.error)
+  assert(data && data.success && data.id, "malformed json response")
+  return data;
 };
